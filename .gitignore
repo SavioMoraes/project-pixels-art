@@ -1,3 +1,15 @@
 # VSCode repo settings
 .vscode
 node_modules
+.github
+.trybe
+cypress
+.editorconfig
+.eslintignore
+.eslintrc.json
+art-with-pixels.gif
+cypress.json
+package-lock.json
+package.json
+README.md
+reporter.json

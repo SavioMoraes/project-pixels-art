@@ -1,0 +1,185 @@
+-------------------> Project Pixel Art <-------------------------------
+
+Neste projeto, você implementará um editor de arte com pixels.
+Ou seja, dada uma paleta de cores e um quadro composto por pixels, você vai permitir que quem usa consiga pintar o que quiser no quadro!
+
+------------------------------------------------------------------------
+
+1 - Adicione à página o título "Paleta de Cores".
+O título deverá ficar dentro de uma tag h1 com o id denominado title;
+O texto do título deve ser exatamente "Paleta de Cores".
+O que será verificado:
+Verifica se contém um elemento h1 com o id title com o título correto
+
+R: Resolvido adicionando uma tag h1 no index.html com id title e o innerHTML com o texto Paleta de Cores
+
+------------------------------------------------------------------------
+
+2 - Adicione à página uma paleta de quatro cores distintas.
+A paleta de cores deve ser um elemento com id denominado color-palette, ao passo que cada cor individual da paleta de cores deve possuir a classe color;
+A cor de fundo de cada elemento da paleta deverá ser a cor que o elemento representa. A única cor não permitida na paleta é a cor branca.;
+Cada elemento da paleta de cores deverá ter uma borda preta, sólida e com 1 pixel de largura;
+A paleta de cores deverá listar todas as cores disponíveis para utilização lado a lado, e deverá ser posicionada abaixo do título "Paleta de Cores";
+A paleta de cores não deve conter cores repetidas.
+O que será verificado:
+A paleta de cores deve ser um elemento com id denominado color-palette
+Verifica se cada cor individual da paleta de cores possui a classe chamada color.
+Verifica se a cor de fundo de cada elemento da paleta é a cor que o elemento representa. A única cor não permitida na paleta é a cor branca.
+Verifica se cada elemento da paleta de cores tem uma borda preta, sólida e com 1 pixel de largura;
+Verifica se a paleta lista todas as cores disponíveis para utilização, lado a lado.
+Verifica se a paleta de cores está posicionada abaixo do título 'Paleta de Cores'
+Verifica se a paleta de cores não contém cores repetidas.
+
+R: Resolve o requisito inserindo no index.html uma div com id color-pallete com quatro divs filhas todas com a classe color e cada uma com o id correspondente a sua cor.
+
+-------------------------------------------------------------------------
+
+3 - Adicione a cor preta como a primeira cor da paleta de cores.
+O que será verificado:
+Verifica se a primeira cor da paleta é preta
+Verifica se as demais cores podem ser escolhidas livremente.
+
+R: Resolvida a questão crindo uma function em script.js, de nome changesToBlack, onde traz do html a div de id color-palette, que não serviu de nada e também as divs de classe color, colocando-as em uma variável blackColor e trazendo-as do html através do query SelectorAll,
+no if, testa se a cor de fundo da div que ocupa a primeira posição é preto e caso contrário seta  cor de fundo dela como preta; depois chama  função para aplicar a function ao código;
+
+-------------------------------------------------------------------------
+
+4 - Adicione à página um quadro de pixels, com 25 pixels.
+O quadro de "pixels" deve ter 5 elementos de largura e 5 elementos de comprimento;
+O quadro de "pixels" deve possuir o id denominado pixel-board, ao passo que cada "pixel" individual dentro do quadro deve possuir a classe denominada pixel;
+A cor inicial dos "pixels" dentro do quadro, ao abrir a página, deve ser branca;
+O quadro de "pixels" deve aparecer abaixo da paleta de cores.
+O que será verificado:
+Verifica se o quadro de pixels possui o id denominado pixel-board
+Verifica se cada pixel individual dentro do quadro possui a classe denominada pixel.
+Verifica se a cor inicial dos pixels dentro do quadro, ao abrir a página, é branca.
+Verifica se o quadro de pixels aparece abaixo da paleta de cores
+
+R: Pra resolver essa questão, foi adicionado ao index.html uma div de id pixel-board com cinco divs filhas, com id pixels e cada uma com cinco filhas com id pixel, depois foram feitas as devidas estilizações no arquivo style.css para que o funcionamento e o design ficasse fluido.
+
+-------------------------------------------------------------------------
+
+5 - Faça com que cada elemento do quadro de pixels possua 40 pixels de largura, 40 pixels de altura e seja delimitado por uma borda preta de 1 pixel.
+O que será verificado:
+Verifica se o quadro de pixels tem altura e comprimento de 5 elementos
+Verifica se 40 pixels é o tamanho total do elemento, incluindo seu conteúdo e excluindo a borda preta, que deve ser criada à parte.
+
+R: Para resolver essa questão setei no style.css na classe .pixel um width de 40px e um heigth de 40px, a borda preta de 1px solid black, já tinha colocado na estilização anterior...
+
+-------------------------------------------------------------------------
+
+6 - Defina a cor preta como cor inicial. Ao carregar a página, a cor preta já deve estar selecionada para pintar os pixels
+O elemento da cor preta deve possuir, inicialmente, a classe selected;
+Note que o elemento que deverá receber a classe selected deve ser um dos elementos que possuem a classe color, como especificado no requisito 2.
+O que será verificado:
+Verifica se o elemento da cor preta possui, inicialmente, a classe selected
+Verifica se nenhuma outra cor da paleta tem a classe selected
+
+R: para resolucionar esse requisito, em script.js, coloquei a variável color para fora do escopo, ela seria amesma da blackColor que estava no escopo da função changesToBlack. e dentro de changesToBlack, testei se colors[0], ou seja, a primeira div com a classe color, é preta, caso contrário, setar a cor como preta, para continuar atendendo o requisito anterior;
+Depois, aí sim, para resolver a questão foi criado uma function defineSelectedColor que paga a variável color[0], correspondente a primeira cor da paleta, agora setada como preta e com .className = 'color selected' defino a classe desta dive como selecionada inicialmente, garantindo assim que apenas o primeiro elemento receba a classe selected; Isso gerou erros nos requisitos anteriores consertados posteriormente...
+
+-------------------------------------------------------------------------
+
+7 - Clicar em uma das cores da paleta faz com que ela seja selecionada e utilizada para preencher os pixels no quadro.
+A classe selected deve ser adicionada à cor selecionada na paleta, ao mesmo tempo em que é removida da cor anteriormente selecionada;
+Somente uma das cores da paleta deve ter a classe selected de cada vez;
+Note que os elementos que deverão receber a classe selected devem ser os mesmos elementos que possuem a classe color, como especificado no requisito 2.
+O que será verificado:
+Verifica se somente uma cor da paleta de cores tem a classe selected de cada vez
+Verifica se os pixels dentro do quadro não têm a classe selected quando são clicados
+
+R: Esse requisito foi resolvido em script.js, primeiramente criando uma constante colorPalete para buscar a div com is color-palette, que contém a paleta de cores, depois foi alterado o nome da function defineSelectedColor para defineInitialSelectColor que continua definindo o primeiro elemento black como cor inicial.
+Depois em colorPalete é chamada a função addEventListner, que recebe dois parâmetros, o rimeiro 'click' é em relação ao evento de click do mouse e o segundo é uma chamada de uma função, que vai dizer o que acontecerá quando um filho de colorPalete receber um evento de click.
+A function que recebe a chamada do evento de click é a colorChange, que define uma variável selectionedColor, que vai receber as dives filhas da div de id colorChange, com (#colorPalete).children. Depois é feito um laço de repetição de zero até o tamanho de selectionedColor (length) e vai buscar pelo index as divs e passar o método setAttribute('class', 'color'), que vai adicionar a classe (primeiro parâmetro) setada no argumento passado no segundo parâmetro 'color' ao elemento.
+por fim no evento passado como parâmetro, pegamos o target.className e adicionamos a classe selected antecedida de um espaço;
+--> setAttribute(): adiciona novo ou modifica o valor de um atributo existente num elemento específico, recebe dois prâmetros como strings, o nome do atributo e o novo valor desejado.
+-------------------------------------------------------------------------
+
+8 - Clicar em um pixel dentro do quadro após selecionar uma cor na paleta faz com que o pixel seja preenchido com a cor selecionada.
+O que será verificado:
+Verifica se ao carregar a página deve ser possível pintar os pixels de preto
+Verifica se após selecionar uma outra cor na paleta, é possível pintar os pixels com essa cor
+Verifica se somente o pixel que foi clicado foi preenchido com a cor selecionada, sem influenciar na cor dos demais pixels.
+
+R: Em script.js, altera o nome d function colorChange para colorChangeForBlack, por que faz mais sentido, já que a cor preta inicia selecionada.
+Depois cria a constante coloringTable que irá buscr todos os elementos com id pixel-board, ou seja, todos as divs do quedro de pintura.
+Após cria uma function addColorPixel, para colorir a tabela (quadro de pintura), que vai receber um evento com parâmetro, esse evento está relacionado ao addEventListener em coloringTable, que recebe como parâmetro um evento de click e chama a function addColorPixel;
+A function addColorPixel vai buscar o elemento com a class .selected setada em colorChangeForBlack, depois uma outra constante changeColor, 
+vai receber o retorno da função getComputedStyle, passando como parâmetro o elemento color e setando o atributo backgroundColor, recebendo com isso a cor selecionada na paleta.
+Depois na constante coloringTableEvent salvamos o target do evento, que na linha de baixo receberá em seu style.backgroundColor a cor salva em changeColor, com isso a div selecionada e somente ela será pintada com a cor selecionada na paleta.
+-------------------------------------------------------------------------
+
+9 - Crie um botão que, ao ser clicado, limpa o quadro preenchendo a cor de todos seus pixels com branco.
+O que será verificado:
+Verifica se o botão tem o id denominado clear-board
+Verifica se o botão está posicionado entre a paleta de cores e o quadro de pixels
+Verifica se o texto do botão é 'Limpar'
+Verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco
+
+R: No arquivo index.html cria uma div com a classe div-clear-table, que tem como filha a tag button com id clear-board e o innerHTML Limpar.
+No arquivo script.js, depois de refatorado o código conta duas function para atender ao requisito de colocar todos os pixels em branco.
+A function removeColorFromTable cria uma constante pixelList que recebe todos os elementos cuja classe é pixel e através do laço for seta todos os elementos com backgroundColor white, limpando a tabela.
+A function colorRemoveEvent, busca o botão cujo id é #clear-board slvando na constante clearButton e depois passando um addEvenListener que recebe um evento de click do mouse e chama a function removeColorFromTable que irá limpar a tabela quando o botão limpar for clicado.
+
+-------------------------------------------------------------------------
+Requisitos Bônus:
+-------------------------------------------------------------------------
+
+10 - Faça o quadro de pixels ter seu tamanho definido pela pessoa usuária.
+Crie um input e um botão que permitam definir um quadro de pixels com tamanho entre 5 e 50. Ao clicar no botão, deve ser gerado um quadro de N pixels de largura e N pixels de altura, onde N é o número inserido no input;
+Ou seja, se o valor passado para o input for 7, ao clicar no botão, vai ser gerado um quadro de 49 pixels (7 pixels de largura x 7 pixels de altura);
+O input deve ter o id denominado board-size e o botão deve ter o id denominado generate-board;
+O input só deve aceitar número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento input;
+O botão deve conter o texto "VQV";
+O input deve estar posicionado entre a paleta de cores e o quadro de pixels;
+O botão deve estar posicionado ao lado do input;
+Se nenhum valor for colocado no input ao clicar no botão, mostre um alert com o texto: "Board inválido!";
+O novo quadro deve ter todos os pixels preenchidos com a cor branca.
+O que será verificado:
+Verifica se existe um input com o id board-size
+Verifica se existe um botão com o id generate-board
+Verifica se o input só aceita número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento input
+Verifica se o botão contém o texto 'VQV'
+Verifica se o input está posicionado entre a paleta de cores e o quadro de pixels
+Verifica se o botão está posicionado ao lado do input
+Verifica se nenhum valor for colocado no input ao clicar no botão, um alert é exibido com o texto: 'Board inválido!'
+Verifica se ao clicar no botão com um valor preenchido, o tamanho do board muda.
+Verifica se o novo quadro tem todos os pixels preenchidos com a cor branca
+
+R: No arquivo index.html cria-se uma div com id input-size que vai receber como filhos um input e um button, com seus respectivos ids, types, names etc.
+No arquivo script.js cria-se uma function que iniciou com o nome de checkSize e depois da refatoração ficou com o nome de changesTableSize que busca o input de id #board-size colocando numa constante inputDimensionalTable e, primeiro compara se nenhum valor foi digitado ao clicar no botão para gerar a tabela passando inputDimensionalTable.value.length === 0 e caso afirmativo retorna 'Board Invalid',
+Depois cria a variável sizeTable transformando o valor do input que é uma string, em number com parseInt e setando 10 para a base codificada (número em base 10);
+--> a função parseInt() analisa um argumento string e retorna um inteiro na base codificada. Recebe 2 parâmetros, geralmente um número em forma de string e a base que se quer o número.
+depois testa se sizeTable for menor que 5 e caso afirmativo fixa como 5 o menor valor possível, testa também no else se for maior que 50 e caso afirmativo fixa 50 como maior valor.
+depois a função changesTableSize chama a functiom reinsertTable que reinserá uma nova tabela com tamanho de acordo com o que for passado no parâmetro que é  variável sizeTable.
+A function reinsertTable, começa chamando a function deleteTable que pega o elemento cujo id é #pixel-board e remove seu filho, ou seja, remove a tabela de pintura com pixels. Depois a function reinsertTable, que recebe um size como parâmetro, cria uma constante newPixelTable que vai receber o método createElement, que cria um elemento HTML passado por parâmetro, que no caso é uma div. seta o id dessa div criada como pixel-board e coloca ela como filha de body de novo no HTML, sendo newPixelTable setada como parâmetro de da HOF appendChild(), que insere um elemento html dinamicamente na pág.
+Depois no laço do for com outro laço for encadeado, a funçao vai criar uma nova constante newPixel com classe pixel que vai ser inserida como filha da div onde o id é newPixels, sendo que um laço cria a linha e o outro a coluna da tabela de pintura,
+Após feito esses passos é chamada a function colorChange para colocar de volta a paleta de cores que foi apagada também.
+
+
+-------------------------------------------------------------------------
+
+11 - Limite o tamanho mínimo e máximo do board.
+Caso o valor digitado no input board-sze fuja do intervalo de 5 a 50, faça:
+Valor menor que 5, considerar 5 como padrão;
+Valor maior que 50, considerar 50 como padrão.
+O que será verificado:
+Verifica se a altura máxima do board é 50
+Verifica se a altura do board é 5 quando um valor menor é colocado no input
+Verifica se a altura do board é 50 quando um valor maior é colocado no input
+
+R: Essa limitação foi setada dentro da function changesTableSize na resolução do requisito 10, testando a variável sizeTable
+
+-------------------------------------------------------------------------
+
+12 - Faça com que as cores da paleta sejam geradas aleatoriamente ao carregar a página.
+A cor preta ainda precisa estar presente e deve ser a primeira na sua paleta de cores.
+O que será verificado:
+Verifica se as cores geradas na paleta são diferentes a cada carregamento da página
+Verifica se a cor preta ainda está presente e é a primeira na sua paleta de cores
+
+R: Esse requisito foi resolvido criando em script.js a function generateRamdomColorRGB que vai gerar um rgb aleatório através das variáveis RGBRed, RGBGreen e RGBBlue, que vai receber um numero aleatório toda vez que a página for recarregada, através da função Math.random que está passada como parâmetro da função parseInt, pois dest forma, como Math.random retorna um número entre 0 e 1, excluindo o 1, o parseInt vai colocar esse número na base 10 depois de multiplicá-lo por 255, gerando um número aleatório entre 0 e 255, qe são os valores do RGB.
+Depois cria a constante generateRGB  que vai receber uma template literals que vai formar uma string com o rgb aleatório e retorna esse rgb gerado em generateRGB;
+Depois cria a function createColorPalette que gerará dinamicamente a paleta de cores com as três últimas cores da paleta sendo geradas aleatoriamente e a primeira mantida como black. setando para isso na classe .color, correspondente a essas 4 divs, a de primeir posição como black e gerando aleatorimente a partir da segunda div, passando para isso o index iniciando com 1 epara cada div, seta a cor chamando a function generateRamdomColorRGB, que vai ser o valor do atributo style.backGroundColor.
+
+--------------------------------Finish-----------------------------------

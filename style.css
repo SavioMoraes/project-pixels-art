@@ -15,25 +15,17 @@ body {
 .container-title {
   background-color: rgb(37, 108, 53, 0.5);
   padding: 10px;
-  width: 40%;
+  width: 60%;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
 }
 
-.color {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 1px solid black;
-  margin-top: 15px;
-}
-
 #title {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  font-size: 2.4em;
+  font-size: 1.3em;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 8px;
@@ -41,7 +33,7 @@ body {
 }
 
 #color-palette {
-  width: 220px;
+  width: 60%;
   padding-bottom: 10px;
   text-align: center;
   height: auto;
@@ -52,24 +44,12 @@ body {
   border-radius: 3px;
 }
 
-#pixel-board {
-  display: table;
-  border: 1px solid black;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.pixels {
-  display: table-row;
-}
-
-.pixel {
-  display: table-cell;
-  border: 1px solid black;
-  background-color: white;
+.color {
+  display: inline-block;
   width: 40px;
   height: 40px;
+  border: 1px solid black;
+  margin-top: 15px;
 }
 
 .div-clear-table {
@@ -119,6 +99,12 @@ body {
   width: 170px;
 }
 
+#board-size:focus {
+  border: none;
+  outline: 0 dotted;
+  outline-offset: 0;
+}
+
 #generate-board {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
@@ -139,10 +125,25 @@ body {
   outline-offset: 0;
 }
 
-#board-size:focus {
-  border: none;
-  outline: 0 dotted;
-  outline-offset: 0;
+#pixel-board {
+  display: table;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+
+.pixels {
+  display: table-row;
+}
+
+.pixel {
+  display: table-cell;
+  border: 1px solid black;
+  background-color: white;
+  width: 40px;
+  height: 40px;
 }
 
 footer {
@@ -154,4 +155,70 @@ footer {
   font-size: large;
   font-weight: 900;
   margin-left: 0;
+}
+
+@media only screen and (max-width: 720px) {
+  .container-title {
+    padding: 10px;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+  
+  #title {
+    font-size: 1.1em;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+
+  #color-palette {
+    width: 70%;
+    padding-bottom: 10px;
+    margin-top: 10px;    
+  }
+  
+  .color {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+  }
+  
+  #clear-board {
+    font-weight: 400;
+    font-size: 0.6em;
+  }
+  
+  #board-size {
+    font-size: .6em;
+    width: 50%;
+    text-align: center;
+  }
+  
+  #generate-board {
+    font-weight: 600;
+    font-size: 0.6em;
+  }
+
+  #pixel-board {
+    width: 70%;
+  }
+  
+  .pixel {
+    display: table-cell;
+    border: 1px solid black;
+    background-color: white;
+    width: 35px;
+    height: 35px;
+  }
+  
+  footer {
+    font-size: .7em;
+    font-weight: 600;
+  }
+}
+
+@media only screen and (max-width: 335px) {
+  #color-palette {
+    width: 100%; 
+  }
 }
